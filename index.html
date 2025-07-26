@@ -4,10 +4,232 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omkar Rajesh Shinde</title>
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ---
+        Portfolio Redesign by Gemini
+        Theme: Professional Dark Mode with Enhanced UI/UX
+        --- */
 
-    <link href="style.css" rel="stylesheet">
+        /* --- Font & Refined Color Palette --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --background: #111827; /* Dark Charcoal */
+            --background-alt: #1f2937; /* Lighter Charcoal */
+            --text-primary: #f9fafb; /* Off-White */
+            --text-secondary: #9ca3af; /* Light Gray */
+            --accent: #3b82f6; /* Electric Blue */
+            --accent-hover: #2563eb;
+            --accent-glow: rgba(59, 130, 246, 0.5); /* For glowing effects */
+            --glass-bg: rgba(31, 41, 55, 0.6);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- Base Styles --- */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+        /* NEW: Subtle background texture for depth */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dHTZ2dnu7u7X19f8/PzKysrBwcGvr6+jo6PFxcWUlJSbm5sAAADPz8/u7u7Nzc2oqKjRyLife3t7b29sZ2dqNq1pAAAAAXRSTlMAQObYZgAAAPxJREFUeNpiYCANMzEwMrE0MTPRTUTz/LMgDEwMLAwZmBL5fD0UuQcphgECo9j08f7/f38fDPDNy8vLo4ODg42NjY2Dg4MvIKgIeBUAi8jIqKioqKioqKioqKioqJiYWFiYWCgoKCQkJCQkNCwsLCwsNCgYGCgaGhoWJhoWJiYmFhZGJlYmJiZWBhZGJgY2BgY2BgaGBhYGBgYGBkYGJgZWZmZWZgYmBgZWBhYmJgYWRgZWJgYmBhaGBpYGBoY2BgYGBkYGNgYWNgYGBgYGBkYGRgYGRgYGRgYGRgYGBgYGRgYGRgYGBgYGRgYGFgYGFgYGFgYGFgYGEyB8CAAQBENJ0defRkLAAAAAElFTkSuQmCC');
+            opacity: 0.03;
+            z-index: -1;
+            pointer-events: none;
+        }
+        * {
+            border-color: var(--border-color);
+        }
+
+        /* --- NEW: Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--background);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--background-alt);
+            border-radius: 10px;
+            border: 2px solid var(--background);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+        
+        /* --- UI Components --- */
+        .glass-effect {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0);
+        }
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--text-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        /* --- Navigation --- */
+        .nav-item {
+            position: relative;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-item:hover {
+            color: var(--text-primary);
+        }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section --- */
+        .hero-image {
+            width: 362px;
+            height: 489px;
+            border-radius: 1.5rem;
+            object-fit: cover;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            transition: transform 0.4s ease-out;
+        }
+        .social-icon {
+            color: var(--text-secondary);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-icon:hover {
+            color: var(--accent);
+            transform: scale(1.1) translateY(-2px);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+        }
+
+        /* --- General Section Styling --- */
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        @media (min-width: 768px) {
+            .section-heading {
+                font-size: 3rem;
+            }
+        }
+        .section-subheading {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+            line-height: 1.7;
+        }
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--accent);
+            z-index: 1000;
+        }
+        .section-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* --- Card & Tag Styling --- */
+        .card {
+            background-color: var(--background-alt);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            height: 100%;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 30px var(--accent-glow);
+            border-color: var(--accent);
+        }
+        .tech-tag {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        /* --- Back to Top Button --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent);
+            color: white;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body class="overflow-x-hidden">
 
@@ -78,48 +300,46 @@
                     </div>
                 </div>
                 <div class="flex justify-center lg:justify-end section-fade hero-image-container">
-                    <img src="images/profile.jpg" alt="A professional headshot of Omkar Rajesh Shinde" class="hero-image">
-                </div>
+    <img src="images/profile.jpg" alt="A professional headshot of Omkar Rajesh Shinde" class="hero-image">
+</div>
         </section>
 
-        <section id="about" class="py-20 px-4 sm:px-6 lg:px-20">
-            <div class="flex flex-col lg:flex-row gap-12">
-                <div class="w-full lg:w-1/2">
-                    <h3 class="text-3xl font-bold mb-6">My Profile</h3>
+<section id="about" class="py-20 px-4 sm:px-6 lg:px-20">
+  <div class="flex flex-col lg:flex-row gap-12">
+   <!-- My Profile -->
+<div class="w-full lg:w-1/2">
+  <h3 class="text-3xl font-bold mb-6">My Profile</h3>
 
-                    <p class="text-gray-300 mb-4">
-                        Hello, I'm Omkar Shinde — a passionate and dedicated B.E. student in Electronics and Computer Science with a strong focus on building intelligent software solutions. I specialize in full-stack development, computer vision, and machine learning, with hands-on experience in creating AI-powered applications.
-                    </p>
+  <p class="text-gray-300 mb-4">
+"Hello, I'm Omkar, a developer driven by the challenge of solving complex problems. My journey into technology started with [mention your first interest, e.g., a simple web project or a fascination with AI], which ignited my passion for building things that have a real-world impact.</p>
 
-                    <p class="text-gray-300 mb-4">
-                        I’ve successfully worked on diverse projects such as deepfake detection systems, stock market prediction models, fitness tracking apps, and smart lifestyle platforms. My technical toolkit includes Python, JavaScript, and frameworks like Flask, React, and OpenCV.
-                    </p>
+  <p class="text-gray-300 mb-4">
+I specialize in Full-Stack Development and Machine Learning, with a deep interest in Computer Vision. I thrive on turning raw data into functional, intelligent applications, whether it's developing a system to detect cancer cells or creating a campus exchange platform to connect students.</p>
 
-                    <p class="text-gray-300 mb-4">
-                        I thrive in fast-paced, innovative environments and enjoy leading impactful projects that combine creativity with problem-solving. Currently, I’m exploring opportunities in AI development, computer vision, and full-stack web technologies.
-                    </p>
+  <p class="text-gray-300 mb-4">
+I'm always eager to learn and apply new technologies to create efficient, scalable, and elegant software solutions. When I'm not coding, you can find me [mention a hobby, e.g., exploring new technologies, playing cricket, reading about AI ethics]."</p>
 
-                    <ul class="space-y-3 text-white">
-                        <li class="flex items-center">
-                            <span class="w-5 h-5 flex items-center justify-center rounded-full bg-blue-500 text-black mr-3 text-xs font-bold">✔</span>
-                            Web Development & Python Programming
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-5 h-5 flex items-center justify-center rounded-full bg-blue-500 text-black mr-3 text-xs font-bold">✔</span>
-                            Full-Stack & Mobile App Development
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-5 h-5 flex items-center justify-center rounded-full bg-blue-500 text-black mr-3 text-xs font-bold">✔</span>
-                            Computer Vision & Machine Learning
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-5 h-5 flex items-center justify-center rounded-full bg-blue-500 text-black mr-3 text-xs font-bold">✔</span>
-                            AI-Powered Integrations & Automation
-                        </li>
-                    </ul>
-                </div>
+  <ul class="space-y-3 text-white">
+    <li class="flex items-center">
+      <span class="w-5 h-5 flex items-center justify-center rounded-full bg-blue-500 text-black mr-3 text-xs font-bold">✔</span>
+      Web Development & Python Programming
+    </li>
+    <li class="flex items-center">
+      <span class="w-5 h-5 flex items-center justify-center rounded-full bg-blue-500 text-black mr-3 text-xs font-bold">✔</span>
+      Full-Stack & Mobile App Development
+    </li>
+    <li class="flex items-center">
+      <span class="w-5 h-5 flex items-center justify-center rounded-full bg-blue-500 text-black mr-3 text-xs font-bold">✔</span>
+      Computer Vision & Machine Learning
+    </li>
+    <li class="flex items-center">
+      <span class="w-5 h-5 flex items-center justify-center rounded-full bg-blue-500 text-black mr-3 text-xs font-bold">✔</span>
+      AI-Powered Integrations & Automation
+    </li>
+  </ul>
+</div>
 
-                <div class="w-full lg:w-1/2">
+<div class="w-full lg:w-1/2">
                     <h3 class="text-3xl font-bold mb-6">Work Experience</h3>
                     <div class="space-y-8">
                         <div class="border-l-4 pl-6" style="border-color: var(--accent);">
@@ -143,12 +363,14 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <a href="https://drive.google.com/file/d/1mMkfKUgw8CsPI9YPu2jHhG4tGsWZo3TU/view"
-                                   target="_blank"
-                                   class="ml-4 flex-shrink-0 text-accent"
-                                   aria-label="View Acmegrade Certificate">
-                                    <i class="fas fa-briefcase text-2xl"></i>
-                                </a>
+                               <a href="https://drive.google.com/file/d/1mMkfKUgw8CsPI9YPu2jHhG4tGsWZo3TU/view"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="ml-4 flex-shrink-0 text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90"
+   style="background-color: var(--accent);"
+   aria-label="View 1M1B Certificate">
+    View</i>
+</a>
                             </div>
                         </div>
 
@@ -173,12 +395,14 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <a href="https://drive.google.com/file/d/1mMkfKUgw8CsPI9YPu2jHhG4tGsWZo3TU/view"
-                                   target="_blank"
-                                   class="ml-4 flex-shrink-0 text-accent"
-                                   aria-label="View 1M1B Certificate">
-                                    <i class="fas fa-briefcase text-2xl"></i>
-                                </a>
+                                <a href="https://drive.google.com/file/d/1Xtg5zuHH-JEwZsR6ND6enhnBtXvyXUHD/view?usp=drivesdk"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="ml-4 flex-shrink-0 text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90"
+   style="background-color: var(--accent);"
+   aria-label="View 1M1B Certificate">
+    View
+</a>
                             </div>
                         </div>
                     </div>
@@ -186,700 +410,710 @@
             </div>
         </section>
 
+<section id="skills" class="py-24" style="background-color: var(--background-alt);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 class="section-heading">Technical Skills</h2>
+            <p class="section-subheading">
+                A showcase of the languages, frameworks, and tools I use to build modern web applications.
+            </p>
+        </div>
 
-        <section id="skills" class="py-24" style="background-color: var(--background-alt);">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h2 class="section-heading">Technical Skills</h2>
-                    <p class="section-subheading">
-                        A showcase of the languages, frameworks, and tools I use to build modern web applications.
-                    </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <div class="card p-8 text-center section-fade">
+                <div class="flex items-center justify-center h-16 w-16 rounded-full mx-auto mb-6" style="background-color: var(--accent-light);">
+                    <i class="fas fa-star text-3xl" style="color: var(--accent);"></i>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                    <div class="card p-8 text-center section-fade">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full mx-auto mb-6" style="background-color: var(--accent-light);">
-                            <i class="fas fa-star text-3xl" style="color: var(--accent);"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Core Expertise</h3>
-                        <div class="flex flex-wrap justify-center gap-2">
-                            <span class="tech-tag px-3 py-1 rounded-full">App Development</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">Web Development</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">DSA</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">Databases</span>
-                        </div>
-                    </div>
-
-                    <div class="card p-8 text-center section-fade" style="transition-delay: 150ms;">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full mx-auto mb-6" style="background-color: var(--accent-light);">
-                            <i class="fas fa-code text-3xl" style="color: var(--accent);"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Languages</h3>
-                        <div class="flex flex-wrap justify-center gap-2">
-                            <span class="tech-tag px-3 py-1 rounded-full">Python</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">JavaScript</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">Java</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">C/C++</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">SQL</span>
-                        </div>
-                    </div>
-
-                    <div class="card p-8 text-center section-fade" style="transition-delay: 300ms;">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full mx-auto mb-6" style="background-color: var(--accent-light);">
-                            <i class="fas fa-layer-group text-3xl" style="color: var(--accent);"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Frameworks & Libraries</h3>
-                        <div class="flex flex-wrap justify-center gap-2">
-                            <span class="tech-tag px-3 py-1 rounded-full">Firebase</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">Scikit-learn</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">OpenCV</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">NumPy</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">Tailwind CSS</span>
-                        </div>
-                    </div>
-
-                    <div class="card p-8 text-center section-fade" style="transition-delay: 450ms;">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full mx-auto mb-6" style="background-color: var(--accent-light);">
-                            <i class="fas fa-tools text-3xl" style="color: var(--accent);"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Tools & Platforms</h3>
-                        <div class="flex flex-wrap justify-center gap-2">
-                            <span class="tech-tag px-3 py-1 rounded-full">Git & GitHub</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">Android Studio</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">Jupyter</span>
-                            <span class="tech-tag px-3 py-1 rounded-full">Firebase</span>
-                        </div>
-                    </div>
-
+                <h3 class="text-2xl font-bold mb-4">Core Expertise</h3>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="tech-tag px-3 py-1 rounded-full">App Development</span>
+                    <span class="tech-tag px-3 py-1 rounded-full">Web Development</span>
+                    <span class="tech-tag px-3 py-1 rounded-full">DSA</span>
+                    <span class="tech-tag px-3 py-1 rounded-full">Databases</span>
                 </div>
             </div>
-        </section>
 
-        <section id="projects" class="py-24" style="background-color: var(--background-alt);" role="region" aria-labelledby="projects-heading">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h2 id="projects-heading" class="section-heading">My Projects</h2>
-                    <p class="section-subheading">
-                        A showcase of cutting-edge projects that blend practical innovation with modern tech stacks.
-                    </p>
+            <div class="card p-8 text-center section-fade" style="transition-delay: 150ms;">
+                <div class="flex items-center justify-center h-16 w-16 rounded-full mx-auto mb-6" style="background-color: var(--accent-light);">
+                    <i class="fas fa-code text-3xl" style="color: var(--accent);"></i>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <h3 class="text-2xl font-bold mb-4">Languages</h3>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="tech-tag px-3 py-1 rounded-full">Python</span>
+                    <span class="tech-tag px-3 py-1 rounded-full">JavaScript</span>
+                    <span class="tech-tag px-3 py-1 rounded-full">Java</span>
+                    <span class="tech-tag px-3 py-1 rounded-full">C/C++</span>
+                    <span class="tech-tag px-3 py-1 rounded-full">SQL</span>
+                </div>
+            </div>
 
-                    <div class="card section-fade p-8 flex flex-col">
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-2xl font-bold">Cancer Detection using ML</h3>
-                                <a href="https://github.com/Omkar90492/Cancer-Detection-Using-Machine-Learning" target="_blank" class="social-icon" aria-label="Cancer Detection GitHub Link">
-                                    <i class="fab fa-github text-2xl"></i>
-                                </a>
-                            </div>
-                            <p class="font-semibold my-2" style="color: var(--text-secondary);">ML-powered Cancer Prediction</p>
-                            <div class="space-y-2 mb-4">
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Trains 3 robust ML models for tumor classification.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Uses SMOTE to handle imbalanced datasets effectively.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Saves trained models in .pkl format for future predictions.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Visualizes model performance with confusion matrices.</span>
-                                </div>
-                            </div>
+            <div class="card p-8 text-center section-fade" style="transition-delay: 300ms;">
+                <div class="flex items-center justify-center h-16 w-16 rounded-full mx-auto mb-6" style="background-color: var(--accent-light);">
+                    <i class="fas fa-layer-group text-3xl" style="color: var(--accent);"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Frameworks & Libraries</h3>
+                <div class="flex flex-wrap justify-center gap-2">
+                     <span class="tech-tag px-3 py-1 rounded-full">Firebase</span>
+                     <span class="tech-tag px-3 py-1 rounded-full">Scikit-learn</span>
+                     <span class="tech-tag px-3 py-1 rounded-full">OpenCV</span>
+                     <span class="tech-tag px-3 py-1 rounded-full">NumPy</span>
+                     <span class="tech-tag px-3 py-1 rounded-full">Tailwind CSS</span>
+                </div>
+            </div>
+
+            <div class="card p-8 text-center section-fade" style="transition-delay: 450ms;">
+                <div class="flex items-center justify-center h-16 w-16 rounded-full mx-auto mb-6" style="background-color: var(--accent-light);">
+                    <i class="fas fa-tools text-3xl" style="color: var(--accent);"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Tools & Platforms</h3>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="tech-tag px-3 py-1 rounded-full">Git & GitHub</span>
+                    <span class="tech-tag px-3 py-1 rounded-full">Android Studio</span>
+                    <span class="tech-tag px-3 py-1 rounded-full">Jupyter</span>
+                    <span class="tech-tag px-3 py-1 rounded-full">Firebase</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="py-24" style="background-color: var(--background-alt);" role="region" aria-labelledby="projects-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 id="projects-heading" class="section-heading">My Projects</h2>
+            <p class="section-subheading">
+                A showcase of cutting-edge projects that blend practical innovation with modern tech stacks.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <div class="card section-fade p-8 flex flex-col">
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold">Cancer Detection using ML</h3>
+                    <p class="font-semibold my-2" style="color: var(--text-secondary);">ML-powered Cancer Prediction</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Trains 3 robust ML models for tumor classification.</span>
                         </div>
-                        <div>
-                            <h4 class="font-semibold mb-3 mt-4">Tech Stack:</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Python</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Scikit-learn</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">XGBoost</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Random Forest</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Matplotlib</span>
-                            </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Uses SMOTE to handle imbalanced datasets effectively.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Saves trained models in .pkl format for future predictions.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Visualizes model performance with confusion matrices.</span>
                         </div>
                     </div>
-
-                    <div class="card section-fade p-8 flex flex-col">
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-2xl font-bold">Campus Swap Application</h3>
-                                <a href="https://github.com/Omkar90492/Campus-Swap-App" target="_blank" class="social-icon" aria-label="Campus Swap GitHub Link">
-                                    <i class="fab fa-github text-2xl"></i>
-                                </a>
-                            </div>
-                            <p class="font-semibold my-2" style="color: var(--text-secondary);">Campus Exchange App</p>
-                            <div class="space-y-2 mb-4">
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Campus Swap App helps students to exchange books, gadgets, and essentials.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Access is limited to verified college users.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Smooth communication with built-in chat and alerts.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Fast search, easy filters, and a clean responsive design.</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-3 mt-4">Tech Stack:</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Java</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">XML</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Firebase Auth</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Firestore DB</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Android Studio</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card section-fade p-8 flex flex-col">
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-2xl font-bold">Face Detection using OpenCV</h3>
-                                <a href="https://github.com/Omkar90492/Face-Detection-Using-Open-CV" target="_blank" class="social-icon" aria-label="Face Detection GitHub Link">
-                                    <i class="fab fa-github text-2xl"></i>
-                                </a>
-                            </div>
-                            <p class="font-semibold my-2" style="color: var(--text-secondary);">Real Face Detect Application</p>
-                            <div class="space-y-2 mb-4">
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Face Detection app built using Python and OpenCV.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Uses Haar Cascades to accurately detect faces in images.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Lightweight and ideal for real-time CV applications.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Generates and saves output images with bounding boxes.</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-3 mt-4">Tech Stack:</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Python</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Haar Cascade</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">OpenCV</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">NumPy</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Matplotlib</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card section-fade p-8 flex flex-col">
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-2xl font-bold">Workout Tracker Application</h3>
-                                <a href="https://github.com/Omkar90492/Workout-Tracker" target="_blank" class="social-icon" aria-label="Workout Tracker GitHub Link">
-                                    <i class="fab fa-github text-2xl"></i>
-                                </a>
-                            </div>
-                            <p class="font-semibold my-2" style="color: var(--text-secondary);">Pose Tracker App</p>
-                            <div class="space-y-2 mb-4">
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Lightweight, browser-based fitness app requiring only a webcam.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Provides real-time posture feedback and rep counting.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Built using Flask, OpenCV & MediaPipe for pose estimation.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Visual dashboards show performance trends clearly.</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-3 mt-4">Tech Stack:</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Python</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Java Script</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">OpenCV</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Flask</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">HTML/CSS</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card section-fade p-8 flex flex-col">
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-2xl font-bold">Lifelog Web Application</h3>
-                                <a href="https://github.com/Omkar90492/Lifelog" target="_blank" class="social-icon" aria-label="Lifelog GitHub Link">
-                                    <i class="fab fa-github text-2xl"></i>
-                                </a>
-                            </div>
-                            <p class="font-semibold my-2" style="color: var(--text-secondary);">Lifestyle Tracking Application</p>
-                            <div class="space-y-2 mb-4">
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>A no-code health tracking app built with GlideApps.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Tracks food, exercise, and emotions with a Google Sheets backend.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Google AppScript manages real-time data flow.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Designed for self-awareness and lifestyle improvement.</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-3 mt-4">Tech Stack:</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">GlideApps</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Google Sheets</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Google AppScript</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Cloud Hosted</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card section-fade p-8 flex flex-col">
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-2xl font-bold">DeepFake Voice Replication</h3>
-                                <a href="https://github.com/Omkar90492/DeepFake-Pipeline" target="_blank" class="social-icon" aria-label="DeepFake Voice GitHub Link">
-                                    <i class="fab fa-github text-2xl"></i>
-                                </a>
-                            </div>
-                            <p class="font-semibold my-2" style="color: var(--text-secondary);">AI-Based Voice Cloning System</p>
-                            <div class="space-y-2 mb-4">
-
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Real-time voice cloning using deep learning.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>DeepFake Pipeline creates realistic face swaps using deep learning.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Text-to-speech synthesis from custom text input.</span>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
-                                    <span>Examines ethical considerations of synthetic media.</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-3 mt-4">Tech Stack:</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Python</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Wave Net</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">PyTorch</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">NumPy</span>
-                                <span class="tech-tag px-3 py-1 text-sm rounded-full">Jupyter</span>
-                            </div>
-                        </div>
+                </div>
+                <div>
+                    <a href="https://github.com/Omkar90492/Cancer-Detection-Using-Machine-Learning" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-white font-semibold py-2 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Cancer Detection on GitHub">
+                        View on GitHub <i class="fab fa-github ml-2"></i>
+                    </a>
+                    <h4 class="font-semibold mb-3 mt-6">Tech Stack:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Python</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Scikit-learn</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">XGBoost</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Random Forest</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Matplotlib</span>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section id="achievements" class="py-24" role="region" aria-labelledby="achievements-heading">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h2 id="achievements-heading" class="section-heading">Achievements & Participations</h2>
-                    <p class="section-subheading">
-                        Actively engaged in national-level internships, tech workshops, and hands-on projects that strengthened real-world problem-solving.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-
-                    <div class="card section-fade p-8">
-                        <div class="flex justify-between items-start">
-                            <div class="flex">
-                                <i class="fas fa-trophy text-2xl mt-1 flex-shrink-0" style="color: var(--accent);"></i>
-                                <div class="ml-4">
-                                    <h3 class="text-xl font-bold">Tech Aspiria - PHCET</h3>
-                                    <p class="text-sm font-semibold my-1" style="color: var(--accent);">April 2025</p>
-                                    <p class="mt-1" style="color: var(--text-secondary);">Participated in Tech Aspiria 2025 Project Competition In April 2025 organized by IETE Student's Forum and Department of Electronics & Computer Science, PHCET. Gained exposure to peer innovations and presented a project on emerging technology trends.</p>
-                                </div>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1py7IhQjqR1miGL6hn_rGec7NQXlAFzzq/view?usp=sharing" target="_blank" class="social-icon ml-4" aria-label="View Certificate">
-                                <i class="fas fa-award text-3xl"></i>
-                            </a>
+            <div class="card section-fade p-8 flex flex-col">
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold">Campus Swap Application</h3>
+                    <p class="font-semibold my-2" style="color: var(--text-secondary);">Campus Exchange App</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Campus Swap App helps students to exchange books, gadgets, and essentials.</span>
                         </div>
-                    </div>
-
-                    <div class="card section-fade p-8">
-                        <div class="flex justify-between items-start">
-                            <div class="flex">
-                                <i class="fas fa-users text-2xl mt-1 flex-shrink-0" style="color: var(--accent);"></i>
-                                <div class="ml-4">
-                                    <h3 class="text-xl font-bold">Seminar on Career Opportunities in DBMS System - PHCET</h3>
-                                    <p class="text-sm font-semibold my-1" style="color: var(--accent);">August 2024</p>
-                                    <p class="mt-1" style="color: var(--text-secondary);">Participated in a seminar on “Career Opportunities in Database Management” organized by the IETE Students Forum, gaining insights into database career paths and industry relevance.</p>
-                                </div>
-                            </div>
-                            <a href="https://drive.google.com/file/d/12G0xEOzatNvmRon6k-X29RzvOwUEg_5z/view?usp=sharing" target="_blank" class="social-icon ml-4" aria-label="View Certificate">
-                                <i class="fas fa-award text-3xl"></i>
-                            </a>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Access is limited to verified college users.</span>
                         </div>
-                    </div>
-
-                    <div class="card section-fade p-8">
-                        <div class="flex justify-between items-start">
-                            <div class="flex">
-                                <i class="fas fa-leaf text-2xl mt-1 flex-shrink-0" style="color: var(--accent);"></i>
-                                <div class="ml-4">
-                                    <h3 class="text-xl font-bold">1M 1B Workshop- Green Skills Academy</h3>
-                                    <p class="text-sm font-semibold my-1" style="color: var(--accent);">July 2025</p>
-                                    <p class="mt-1" style="color: var(--text-secondary);">Attended the Activation Workshop Session on green skills and tech-driven sustainability under the 1M1B Green Internship, supported by AICTE and Salesforce. Gained insights into sustainable development, innovation, and the role of emerging technologies in shaping a greener future.</p>
-                                </div>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1euGo80TEDRskLe6l1q9Vw7Ytvg9alazv/view?usp=sharing" target="_blank" class="social-icon ml-4" aria-label="View Certificate">
-                                <i class="fas fa-award text-3xl"></i>
-                            </a>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Smooth communication with built-in chat and alerts.</span>
                         </div>
-                    </div>
-
-                    <div class="card section-fade p-8">
-                        <div class="flex justify-between items-start">
-                            <div class="flex">
-                                <i class="fas fa-lightbulb text-2xl mt-1 flex-shrink-0" style="color: var(--accent);"></i>
-                                <div class="ml-4">
-                                    <h3 class="text-xl font-bold">Seminar On Emerging Trends in Technology - PHCET</h3>
-                                    <p class="text-sm font-semibold my-1" style="color: var(--accent);">March 2024</p>
-                                    <p class="mt-1" style="color: var(--text-secondary);">Participated in a Seminar On "Navigating Pathways to find your Perfect Match in Emerging Trends” organized by IETE Students Forum, gaining exposure to cutting-edge technology career paths.</p>
-                                </div>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1r_XdSANcZsjOJA7hTxLuAF_lRwu0gdCW/view?usp=sharing" target="_blank" class="social-icon ml-4" aria-label="View Certificate">
-                                <i class="fas fa-award text-3xl"></i>
-                            </a>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Fast search, easy filters, and a clean responsive design.</span>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="text-center section-fade pt-8">
-                    <h3 class="text-3xl font-bold mb-8">Certifications</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-                        <div class="card p-6 flex items-center justify-between">
-                            <div>
-                                <p class="font-semibold text-left" style="color: var(--accent);">Data Analytics</p>
-                                <p class="text-sm text-left" style="color: var(--text-secondary);">Deloitte</p>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1GIH5S4tw-lZKkGcrIv8tVl7KPgcHhycB/view?usp=sharing" target="_blank" class="social-icon" aria-label="View Certificate">
-                                <i class="fas fa-medal text-2xl"></i>
-                            </a>
-                        </div>
-                        <div class="card p-6 flex items-center justify-between">
-                            <div>
-                                <p class="font-semibold text-left" style="color: var(--accent);">Data Analyst</p>
-                                <p class="text-sm text-left" style="color: var(--text-secondary);">One Roadmap</p>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1uYd2eClYg-8M4k7xq5ueiNJYuulpf2cn/view?usp=sharing" target="_blank" class="social-icon" aria-label="View Certificate">
-                                <i class="fas fa-medal text-2xl"></i>
-                            </a>
-                        </div>
-                        <div class="card p-6 flex items-center justify-between">
-                            <div>
-                                <p class="font-semibold text-left" style="color: var(--accent);">Frontend Dev</p>
-                                <p class="text-sm text-left" style="color: var(--text-secondary);">One Roadmap</p>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1BzXOvBMNmSCtZUq8Gc7m35JYXyWRJn1t/view?usp=drivesdk" target="_blank" class="social-icon" aria-label="View Certificate">
-                                <i class="fas fa-medal text-2xl"></i>
-                            </a>
-                        </div>
-                        <div class="card p-6 flex items-center justify-between">
-                            <div>
-                                <p class="font-semibold text-left" style="color: var(--accent);">Java Programming</p>
-                                <p class="text-sm text-left" style="color: var(--text-secondary);">Scaler</p>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1DG35ysETs3laBXYD1ZYBcpC31iIegofM/view?usp=drivesdk" target="_blank" class="social-icon" aria-label="View Certificate">
-                                <i class="fas fa-medal text-2xl"></i>
-                            </a>
-                        </div>
-
-                        <div class="card p-6 flex items-center justify-between">
-                            <div>
-                                <p class="font-semibold text-left" style="color: var(--accent);">Python Programming</p>
-                                <p class="text-sm text-left" style="color: var(--text-secondary);">Scaler</p>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1ZxV1em80UKXkDLAhtPDQAAD9GtOBjNRW/view?usp=drivesdk" target="_blank" class="social-icon" aria-label="View Certificate">
-                                <i class="fas fa-medal text-2xl"></i>
-                            </a>
-                        </div>
-                        <div class="card p-6 flex items-center justify-between">
-                            <div>
-                                <p class="font-semibold text-left" style="color: var(--accent);">SQL Basic</p>
-                                <p class="text-sm text-left" style="color: var(--text-secondary);">HackerRank</p>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1-NVc2FqmevjT5rLjZkZUqG22y6SBZJ_2/view?usp=drivesdk" target="_blank" class="social-icon" aria-label="View Certificate">
-                                <i class="fas fa-medal text-2xl"></i>
-                            </a>
-                        </div>
-                        <div class="card p-6 flex items-center justify-between">
-                            <div>
-                                <p class="font-semibold text-left" style="color: var(--accent);">SQL Intermediate</p>
-                                <p class="text-sm text-left" style="color: var(--text-secondary);">HackerRank</p>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1zC7EsWAFtFP3JeevlR3eE3n8XafOAkTn/view?usp=drivesdk" target="_blank" class="social-icon" aria-label="View Certificate">
-                                <i class="fas fa-medal text-2xl"></i>
-                            </a>
-                        </div>
-                        <div class="card p-6 flex items-center justify-between">
-                            <div>
-                                <p class="font-semibold text-left" style="color: var(--accent);">SQL Advanced</p>
-                                <p class="text-sm text-left" style="color: var(--text-secondary);">HackerRank</p>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1mBy4sce88idS0JWFui73h0O181534IwC/view?usp=drivesdk" target="_blank" class="social-icon" aria-label="View Certificate">
-                                <i class="fas fa-medal text-2xl"></i>
-                            </a>
-                        </div>
-
-                        <div class="card p-6 flex items-center justify-between">
-                            <div>
-                                <p class="font-semibold text-left" style="color: var(--accent);">Introduction to DB & SQL</p>
-                                <p class="text-sm text-left" style="color: var(--text-secondary);">Great Learning</p>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1FJ_v3G-u8I96UHx3Bn5Mefn_x-FOEUF-/view?usp=drivesdk" target="_blank" class="social-icon" aria-label="View Certificate">
-                                <i class="fas fa-medal text-2xl"></i>
-                            </a>
-                        </div>
-                        <div class="card p-6 flex items-center justify-between">
-                            <div>
-                                <p class="font-semibold text-left" style="color: var(--accent);">Data Structures Algorithms</p>
-                                <p class="text-sm text-left" style="color: var(--text-secondary);">Maths In Depth</p>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1823ha9LMvFocI5uaYmKM6AmzTFtPH5Lq/view?usp=drivesdk" target="_blank" class="social-icon" aria-label="View Certificate">
-                                <i class="fas fa-medal text-2xl"></i>
-                            </a>
-                        </div>
-                        <div class="card p-6 flex items-center justify-between">
-                            <div>
-                                <p class="font-semibold text-left" style="color: var(--accent);">C Programming</p>
-                                <p class="text-sm text-left" style="color: var(--text-secondary);">Maths In Depth</p>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1nzt-DBAkfYnfgJidoBySFrOF_mARJApU/view?usp=sharing" target="_blank" class="social-icon" aria-label="View Certificate">
-                                <i class="fas fa-medal text-2xl"></i>
-                            </a>
-                        </div>
-                        <div class="card p-6 flex items-center justify-between">
-                            <div>
-                                <p class="font-semibold text-left" style="color: var(--accent);">Python + Data Science</p>
-                                <p class="text-sm text-left" style="color: var(--text-secondary);">EDX / IBM</p>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1ibg8uwRIXGu1darhsMo5eH47F9LPw6Lu/view?usp=drivesdk" target="_blank" class="social-icon" aria-label="View Certificate">
-                                <i class="fas fa-medal text-2xl"></i>
-                            </a>
-                        </div>
-
+                <div>
+                    <a href="https://github.com/Omkar90492/Campus-Swap-App" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-white font-semibold py-2 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Campus Swap App on GitHub">
+                        View on GitHub <i class="fab fa-github ml-2"></i>
+                    </a>
+                    <h4 class="font-semibold mb-3 mt-6">Tech Stack:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Java</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">XML</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Firebase Auth</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Firestore DB</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Android Studio</span>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <main id="main-content">
-            <section id="contact" class="py-24" style="background-color: var(--background-alt);" role="region" aria-labelledby="contact-heading">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center">
-                        <h2 id="contact-heading" class="section-heading">Connect With Me</h2>
-                        <p class="section-subheading">
-                            I'm always excited to collaborate, learn, and turn innovative ideas into meaningful outcomes. Let's connect!
-                        </p>
-                    </div>
-                    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 section-fade">
-                        <div class="space-y-8">
-                            <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center tech-tag">
-                                    <i class="fas fa-envelope text-2xl" style="color: var(--accent);"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-semibold">Email</h3>
-                                    <a href="mailto:omkarrajeshshinde0@gmail.com" class="hover:underline text-lg" style="color: var(--text-secondary);">omkarrajeshshinde0@gmail.com</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center tech-tag">
-                                    <i class="fab fa-linkedin text-2xl" style="color: var(--accent);"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-semibold">LinkedIn</h3>
-                                    <a href="https://www.linkedin.com/in/omkar-shinde-009787251/" target="_blank" class="hover:underline text-lg" style="color: var(--text-secondary);">omkar-shinde</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center tech-tag">
-                                    <i class="fas fa-map-marker-alt text-2xl" style="color: var(--accent);"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-semibold">Location</h3>
-                                    <p class="text-lg" style="color: var(--text-secondary);">Rasayani, Maharashtra, India</p>
-                                </div>
-                            </div>
+            <div class="card section-fade p-8 flex flex-col">
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold">Face Detection using OpenCV</h3>
+                    <p class="font-semibold my-2" style="color: var(--text-secondary);">Real Face Detect Application</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Face Detection app built using Python and OpenCV.</span>
                         </div>
-
-                        <form action="https://formspree.io/f/your_form_id" method="POST" class="space-y-4">
-                            <div>
-                                <label for="name" class="sr-only">Your Name</label>
-                                <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:outline-none" style="background-color: var(--background); border-color: var(--border-color); --tw-ring-color: var(--accent);">
-                            </div>
-                            <div>
-                                <label for="email" class="sr-only">Your Email</label>
-                                <input type="email" id="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:outline-none" style="background-color: var(--background); border-color: var(--border-color); --tw-ring-color: var(--accent);">
-                            </div>
-                            <div>
-                                <label for="message" class="sr-only">Your Message</label>
-                                <textarea id="message" name="message" placeholder="Your Message" rows="5" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:outline-none" style="background-color: var(--background); border-color: var(--border-color); --tw-ring-color: var(--accent);"></textarea>
-                            </div>
-                            <button type="submit" class="btn-primary w-full px-8 py-3 rounded-full font-semibold text-lg">Send Message</button>
-                        </form>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Uses Haar Cascades to accurately detect faces in images.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Lightweight and ideal for real-time CV applications.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Generates and saves output images with bounding boxes.</span>
+                        </div>
                     </div>
                 </div>
-            </section>
+                <div>
+                    <a href="https://github.com/Omkar90492/Face-Detection-Using-Open-CV" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-white font-semibold py-2 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Face Detection on GitHub">
+                        View on GitHub <i class="fab fa-github ml-2"></i>
+                    </a>
+                    <h4 class="font-semibold mb-3 mt-6">Tech Stack:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Python</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Haar Cascade</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">OpenCV</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">NumPy</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Matplotlib</span>
+                    </div>
+                </div>
+            </div>
 
-        </main>
+            <div class="card section-fade p-8 flex flex-col">
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold">Workout Tracker Application</h3>
+                    <p class="font-semibold my-2" style="color: var(--text-secondary);">Pose Tracker App</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Lightweight, browser-based fitness app requiring only a webcam.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Provides real-time posture feedback and rep counting.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Built using Flask, OpenCV & MediaPipe for pose estimation.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Visual dashboards show performance trends clearly.</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a href="https://github.com/Omkar90492/Workout-Tracker" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-white font-semibold py-2 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Workout Tracker on GitHub">
+                        View on GitHub <i class="fab fa-github ml-2"></i>
+                    </a>
+                    <h4 class="font-semibold mb-3 mt-6">Tech Stack:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Python</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Java Script</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">OpenCV</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Flask</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">HTML/CSS</span>
+                    </div>
+                </div>
+            </div>
 
-        <footer class="py-16" style="background-color: #0d1117;" role="contentinfo">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card section-fade p-8 flex flex-col">
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold">Lifelog Web Application</h3>
+                    <p class="font-semibold my-2" style="color: var(--text-secondary);">Lifestyle Tracking Application</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>A no-code health tracking app built with GlideApps.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Tracks food, exercise, and emotions with a Google Sheets backend.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Google AppScript manages real-time data flow.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Designed for self-awareness and lifestyle improvement.</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a href="https://github.com/Omkar90492/Lifelog" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-white font-semibold py-2 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Lifelog on GitHub">
+                        View on GitHub <i class="fab fa-github ml-2"></i>
+                    </a>
+                    <h4 class="font-semibold mb-3 mt-6">Tech Stack:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">GlideApps</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Google Sheets</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Google AppScript</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Cloud Hosted</span>
+                    </div>
+                </div>
+            </div>
 
+            <div class="card section-fade p-8 flex flex-col">
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold">DeepFake Voice Replication</h3>
+                    <p class="font-semibold my-2" style="color: var(--text-secondary);">AI-Based Voice Cloning System</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Real-time voice cloning using deep learning.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>DeepFake Pipeline creates realistic face swaps using deep learning.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Text-to-speech synthesis from custom text input.</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle mt-1 mr-2" style="color: var(--accent);"></i>
+                            <span>Examines ethical considerations of synthetic media.</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a href="https://github.com/Omkar90492/DeepFake-Pipeline" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-white font-semibold py-2 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View DeepFake Voice Replication on GitHub">
+                        View on GitHub <i class="fab fa-github ml-2"></i>
+                    </a>
+                    <h4 class="font-semibold mb-3 mt-6">Tech Stack:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Python</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Wave Net</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">PyTorch</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">NumPy</span>
+                        <span class="tech-tag px-3 py-1 text-sm rounded-full">Jupyter</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="achievements" class="py-24" role="region" aria-labelledby="achievements-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 id="achievements-heading" class="section-heading">Achievements & Participations</h2>
+            <p class="section-subheading">
+                Actively engaged in national-level internships, tech workshops, and hands-on projects that strengthened real-world problem-solving.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+
+            <div class="card section-fade p-8">
+                <div class="flex justify-between items-start">
+                    <div class="flex">
+                        <i class="fas fa-trophy text-2xl mt-1 flex-shrink-0" style="color: var(--accent);"></i>
+                        <div class="ml-4">
+                            <h3 class="text-xl font-bold">Tech Aspiria - PHCET</h3>
+                            <p class="text-sm font-semibold my-1" style="color: var(--accent);">April 2025</p>
+                            <p class="mt-1" style="color: var(--text-secondary);">Participated in Tech Aspiria 2025 Project Competition In April 2025 organized by IETE Student's Forum and Department of Electronics & Computer Science, PHCET. Gained exposure to peer innovations and presented a project on emerging technology trends.</p>
+                        </div>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1py7IhQjqR1miGL6hn_rGec7NQXlAFzzq/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="ml-4 flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card section-fade p-8">
+                <div class="flex justify-between items-start">
+                    <div class="flex">
+                        <i class="fas fa-users text-2xl mt-1 flex-shrink-0" style="color: var(--accent);"></i>
+                        <div class="ml-4">
+                            <h3 class="text-xl font-bold">Seminar on Career Opportunities in DBMS System - PHCET</h3>
+                            <p class="text-sm font-semibold my-1" style="color: var(--accent);">August 2024</p>
+                            <p class="mt-1" style="color: var(--text-secondary);">Participated in a seminar on “Career Opportunities in Database Management” organized by the IETE Students Forum, gaining insights into database career paths and industry relevance.</p>
+                        </div>
+                    </div>
+                    <a href="https://drive.google.com/file/d/12G0xEOzatNvmRon6k-X29RzvOwUEg_5z/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="ml-4 flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card section-fade p-8">
+                <div class="flex justify-between items-start">
+                    <div class="flex">
+                        <i class="fas fa-leaf text-2xl mt-1 flex-shrink-0" style="color: var(--accent);"></i>
+                        <div class="ml-4">
+                            <h3 class="text-xl font-bold">1M 1B Workshop- Green Skills Academy</h3>
+                            <p class="text-sm font-semibold my-1" style="color: var(--accent);">July 2025</p>
+                            <p class="mt-1" style="color: var(--text-secondary);">Attended the Activation Workshop Session on green skills and tech-driven sustainability under the 1M1B Green Internship, supported by AICTE and Salesforce. Gained insights into sustainable development, innovation, and the role of emerging technologies in shaping a greener future.</p>
+                        </div>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1euGo80TEDRskLe6l1q9Vw7Ytvg9alazv/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="ml-4 flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card section-fade p-8">
+                <div class="flex justify-between items-start">
+                    <div class="flex">
+                        <i class="fas fa-lightbulb text-2xl mt-1 flex-shrink-0" style="color: var(--accent);"></i>
+                        <div class="ml-4">
+                            <h3 class="text-xl font-bold">Seminar On Emerging Trends in Technology - PHCET</h3>
+                            <p class="text-sm font-semibold my-1" style="color: var(--accent);">March 2024</p>
+                            <p class="mt-1" style="color: var(--text-secondary);">Participated in a Seminar On "Navigating Pathways to find your Perfect Match in Emerging Trends” organized by IETE Students Forum, gaining exposure to cutting-edge technology career paths.</p>
+                        </div>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1r_XdSANcZsjOJA7hTxLuAF_lRwu0gdCW/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="ml-4 flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center section-fade pt-8">
+            <h3 class="text-3xl font-bold mb-8">Certifications</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div class="card p-6 flex items-center justify-between">
                     <div>
-                        <h3 class="text-xl font-bold mb-2" style="color: var(--text-primary);">Omkar Rajesh Shinde</h3>
-                        <p class="mb-2" style="color: var(--text-secondary);">
-                            An Electronics & Computer Science student turning complex problems into elegant and efficient code.
-                        </p>
-                        <div class="flex space-x-4">
-                            <a href="https://www.linkedin.com/in/omkar-shinde-009787251/" target="_blank" class="social-icon" aria-label="LinkedIn Profile"><i class="fab fa-linkedin text-xl"></i></a>
-                            <a href="https://github.com/Omkar90492" target="_blank" class="social-icon" aria-label="GitHub Profile"><i class="fab fa-github text-xl"></i></a>
-                            <a href="https://www.instagram.com/omkar.shinde90?utm_source=qr&igsh=cjV3ZWF0c2czdjg5/" target="_blank" class="social-icon" aria-label="Instagram Profile"><i class="fab fa-instagram text-xl"></i></a>
-                            <a href="https://x.com/OmkarShind62978" target="_blank" class="social-icon" aria-label="X Profile"><i class="fab fa-twitter text-xl"></i></a>
-                            <a href="mailto:omkarrajeshshinde0@gmail.com" class="social-icon" aria-label="Email Me"><i class="fas fa-envelope text-xl"></i></a>
+                        <p class="font-semibold text-left" style="color: var(--accent);">Data Analytics</p>
+                        <p class="text-sm text-left" style="color: var(--text-secondary);">Deloitte</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1GIH5S4tw-lZKkGcrIv8tVl7KPgcHhycB/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="card p-6 flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-left" style="color: var(--accent);">Data Analyst</p>
+                        <p class="text-sm text-left" style="color: var(--text-secondary);">One Roadmap</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1uYd2eClYg-8M4k7xq5ueiNJYuulpf2cn/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="card p-6 flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-left" style="color: var(--accent);">Frontend Dev</p>
+                        <p class="text-sm text-left" style="color: var(--text-secondary);">One Roadmap</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1BzXOvBMNmSCtZUq8Gc7m35JYXyWRJn1t/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="card p-6 flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-left" style="color: var(--accent);">Java Programming</p>
+                        <p class="text-sm text-left" style="color: var(--text-secondary);">Scaler</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1DG35ysETs3laBXYD1ZYBcpC31iIegofM/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="card p-6 flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-left" style="color: var(--accent);">Python Programming</p>
+                        <p class="text-sm text-left" style="color: var(--text-secondary);">Scaler</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1ZxV1em80UKXkDLAhtPDQAAD9GtOBjNRW/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="card p-6 flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-left" style="color: var(--accent);">SQL Basic</p>
+                        <p class="text-sm text-left" style="color: var(--text-secondary);">HackerRank</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1-NVc2FqmevjT5rLjZkZUqG22y6SBZJ_2/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="card p-6 flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-left" style="color: var(--accent);">SQL Intermediate</p>
+                        <p class="text-sm text-left" style="color: var(--text-secondary);">HackerRank</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1zC7EsWAFtFP3JeevlR3eE3n8XafOAkTn/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="card p-6 flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-left" style="color: var(--accent);">SQL Advanced</p>
+                        <p class="text-sm text-left" style="color: var(--text-secondary);">HackerRank</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1mBy4sce88idS0JWFui73h0O181534IwC/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="card p-6 flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-left" style="color: var(--accent);">Introduction to DB & SQL</p>
+                        <p class="text-sm text-left" style="color: var(--text-secondary);">Great Learning</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1FJ_v3G-u8I96UHx3Bn5Mefn_x-FOEUF-/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="card p-6 flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-left" style="color: var(--accent);">Data Structures Algorithms</p>
+                        <p class="text-sm text-left" style="color: var(--text-secondary);">Maths In Depth</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1823ha9LMvFocI5uaYmKM6AmzTFtPH5Lq/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="card p-6 flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-left" style="color: var(--accent);">C Programming</p>
+                        <p class="text-sm text-left" style="color: var(--text-secondary);">Maths In Depth</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1nzt-DBAkfYnfgJidoBySFrOF_mARJApU/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="card p-6 flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-left" style="color: var(--accent);">Python + Data Science</p>
+                        <p class="text-sm text-left" style="color: var(--text-secondary);">EDX / IBM</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1ibg8uwRIXGu1darhsMo5eH47F9LPw6Lu/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center text-white text-sm font-semibold py-1 px-4 rounded-md transition-opacity duration-300 hover:opacity-90" style="background-color: var(--accent);" aria-label="View Certificate">
+                        View <i class="fas fa-certificate ml-2"></i>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<main id="main-content">
+    <section id="contact" class="py-24" style="background-color: var(--background-alt);" role="region" aria-labelledby="contact-heading">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 id="contact-heading" class="section-heading">Connect With Me</h2>
+                <p class="section-subheading">
+                   I'm always excited to collaborate, learn, and turn innovative ideas into meaningful outcomes. Let's connect!
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 section-fade">
+                <div class="space-y-8">
+                     <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center tech-tag">
+                            <i class="fas fa-envelope text-2xl" style="color: var(--accent);"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Email</h3>
+                            <a href="mailto:omkarrajeshshinde0@gmail.com" class="hover:underline text-lg" style="color: var(--text-secondary);">omkarrajeshshinde0@gmail.com</a>
                         </div>
                     </div>
-
-                    <div>
-                        <h3 class="text-xl font-bold mb-4" style="color: var(--text-primary);">Quick Links</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#about" class="hover:text-white transition-colors" style="color: var(--text-secondary);">About Me</a></li>
-                            <li><a href="#skills" class="hover:text-white transition-colors" style="color: var(--text-secondary);">Skills</a></li>
-                            <li><a href="#projects" class="hover:text-white transition-colors" style="color: var(--text-secondary);">Projects</a></li>
-                            <li><a href="#achievements" class="hover:text-white transition-colors" style="color: var(--text-secondary);">Achievements</a></li>
-                            <li><a href="#contact" class="hover:text-white transition-colors" style="color: var(--text-secondary);">Contact</a></li>
-                        </ul>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center tech-tag">
+                            <i class="fab fa-linkedin text-2xl" style="color: var(--accent);"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">LinkedIn</h3>
+                            <a href="https://www.linkedin.com/in/omkar-shinde-009787251/" target="_blank" class="hover:underline text-lg" style="color: var(--text-secondary);">omkar-shinde</a>
+                        </div>
                     </div>
-
-                    <div>
-                        <h3 class="text-xl font-bold mb-4" style="color: var(--text-primary);">Get in Touch</h3>
-                        <ul class="space-y-3" style="color: var(--text-secondary);">
-                            <li class="flex items-start">
-                                <i class="fas fa-map-marker-alt mt-1 mr-3 flex-shrink-0"></i>
-                                <span>Rasayani, Maharashtra, India</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-phone mt-1 mr-3 flex-shrink-0"></i>
-                                <a href="tel:+919284859452" class="hover:text-white transition-colors">+91 9284859452</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-envelope mt-1 mr-3 flex-shrink-0"></i>
-                                <a href="mailto:omkarrajeshshinde0@gmail.com" class="hover:text-white transition-colors">omkarrajeshshinde0@gmail.com</a>
-                            </li>
-                        </ul>
+                     <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center tech-tag">
+                            <i class="fas fa-map-marker-alt text-2xl" style="color: var(--accent);"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Location</h3>
+                            <p class="text-lg" style="color: var(--text-secondary);">Rasayani, Maharashtra, India</p>
+                        </div>
                     </div>
-
                 </div>
 
-                <div class="border-t mt-12 pt-8 text-center" style="border-color: var(--border-color);">
-                    <p style="color: var(--text-secondary);">
-                        © 2025 Omkar Rajesh Shinde. All rights reserved.
-                    </p>
-                </div>
+                <form action="https://formspree.io/f/your_form_id" method="POST" class="space-y-4">
+                    <div>
+                        <label for="name" class="sr-only">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:outline-none" style="background-color: var(--background); border-color: var(--border-color); --tw-ring-color: var(--accent);">
+                    </div>
+                    <div>
+                        <label for="email" class="sr-only">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:outline-none" style="background-color: var(--background); border-color: var(--border-color); --tw-ring-color: var(--accent);">
+                    </div>
+                    <div>
+                         <label for="message" class="sr-only">Your Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:outline-none" style="background-color: var(--background); border-color: var(--border-color); --tw-ring-color: var(--accent);"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full px-8 py-3 rounded-full font-semibold text-lg">Send Message</button>
+                </form>
             </div>
-        </footer>
+        </div>
+    </section>
+    
+    </main>
 
-        <a href="#home" class="back-to-top" aria-label="Back to top">
-            <i class="fas fa-arrow-up"></i>
-        </a>
+<footer class="py-16" style="background-color: #0d1117;" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-                const mobileMenu = document.getElementById('mobileMenu');
+            <div>
+    <h3 class="text-xl font-bold mb-2" style="color: var(--text-primary);">Omkar Rajesh Shinde</h3>
+    <p class="mb-2" style="color: var(--text-secondary);">
+        An Electronics & Computer Science student  turning complex problems into elegant and efficient code.
+    </p>
+    <div class="flex space-x-4">
+        <a href="https://www.linkedin.com/in/omkar-shinde-009787251/" target="_blank" class="social-icon" aria-label="LinkedIn Profile"><i class="fab fa-linkedin text-xl"></i></a>
+        <a href="https://github.com/Omkar90492" target="_blank" class="social-icon" aria-label="GitHub Profile"><i class="fab fa-github text-xl"></i></a>
+        <a href="https://www.instagram.com/omkar.shinde90?utm_source=qr&igsh=cjV3ZWF0c2czdjg5/" target="_blank" class="social-icon" aria-label="Instagram Profile"><i class="fab fa-instagram text-xl"></i></a>
+        <a href="https://x.com/OmkarShind62978" target="_blank" class="social-icon" aria-label="X Profile"><i class="fab fa-twitter text-xl"></i></a>
+        <a href="mailto:omkarrajeshshinde0@gmail.com" class="social-icon" aria-label="Email Me"><i class="fas fa-envelope text-xl"></i></a>
+    </div>
+</div>
 
-                if (mobileMenuBtn && mobileMenu) {
-                    mobileMenuBtn.addEventListener('click', () => {
-                        const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-                        mobileMenu.classList.toggle('hidden');
-                        mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            <div>
+                <h3 class="text-xl font-bold mb-4" style="color: var(--text-primary);">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#about" class="hover:text-white transition-colors" style="color: var(--text-secondary);">About Me</a></li>
+                    <li><a href="#skills" class="hover:text-white transition-colors" style="color: var(--text-secondary);">Skills</a></li>
+                    <li><a href="#projects" class="hover:text-white transition-colors" style="color: var(--text-secondary);">Projects</a></li>
+                    <li><a href="#achievements" class="hover:text-white transition-colors" style="color: var(--text-secondary);">Achievements</a></li>
+                    <li><a href="#contact" class="hover:text-white transition-colors" style="color: var(--text-secondary);">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4" style="color: var(--text-primary);">Get in Touch</h3>
+                <ul class="space-y-3" style="color: var(--text-secondary);">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt mt-1 mr-3 flex-shrink-0"></i>
+                        <span>Rasayani, Maharashtra, India</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-phone mt-1 mr-3 flex-shrink-0"></i>
+                        <a href="tel:+919284859452" class="hover:text-white transition-colors">+91 9284859452</a>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope mt-1 mr-3 flex-shrink-0"></i>
+                        <a href="mailto:omkarrajeshshinde0@gmail.com" class="hover:text-white transition-colors">omkarrajeshshinde0@gmail.com</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        
+        <div class="border-t mt-12 pt-8 text-center" style="border-color: var(--border-color);">
+            <p style="color: var(--text-secondary);">
+                © 2025 Omkar Rajesh Shinde. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<a href="#home" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+                });
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
                     });
-                    mobileMenu.querySelectorAll('a').forEach(link => {
-                        link.addEventListener('click', () => {
-                            mobileMenu.classList.add('hidden');
-                            mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                        });
-                    });
+                });
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.section-fade').forEach(el => observer.observe(el));
+
+            const scrollProgress = document.getElementById('scrollProgress');
+            const backToTopBtn = document.querySelector('.back-to-top');
+
+            const handleScroll = () => {
+                // Scroll progress
+                const scrollTop = document.documentElement.scrollTop;
+                const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                if (scrollProgress) {
+                    scrollProgress.style.width = scrollPercent + '%';
                 }
 
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        }
-                    });
-                }, { threshold: 0.1 });
-
-                document.querySelectorAll('.section-fade').forEach(el => observer.observe(el));
-
-                const scrollProgress = document.getElementById('scrollProgress');
-                const backToTopBtn = document.querySelector('.back-to-top');
-
-                const handleScroll = () => {
-                    // Scroll progress
-                    const scrollTop = document.documentElement.scrollTop;
-                    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    const scrollPercent = (scrollTop / docHeight) * 100;
-                    if (scrollProgress) {
-                        scrollProgress.style.width = scrollPercent + '%';
+                // Back to top button
+                if (backToTopBtn) {
+                    if (window.scrollY > 300) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
                     }
-
-                    // Back to top button
-                    if (backToTopBtn) {
-                        if (window.scrollY > 300) {
-                            backToTopBtn.classList.add('visible');
-                        } else {
-                            backToTopBtn.classList.remove('visible');
-                        }
-                    }
-                };
-
-                window.addEventListener('scroll', handleScroll, { passive: true });
+                }
+            };
+            
+            window.addEventListener('scroll', handleScroll, { passive: true });
+        });
+    </script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            var typed = new Typed('#hero-heading', {
+                strings: ["Hi, I'm Omkar Shinde"],
+                typeSpeed: 50, // Speed of typing in milliseconds
+                backSpeed: 25,
+                loop: false,
+                showCursor: true,
+                cursorChar: '_',
             });
-        </script>
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
