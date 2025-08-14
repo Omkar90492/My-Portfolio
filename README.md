@@ -40,4 +40,6 @@ portfolio/
 ```
 Here’s how the portfolio looks when deployed:
 
-![result](images/result.png)
+
+![result ](images/result.png)
+
