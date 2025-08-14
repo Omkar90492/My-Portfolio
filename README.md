@@ -40,4 +40,4 @@ portfolio/
 ```
 Here’s how the portfolio looks when deployed:
 
-![User Interface](images/result.jpg)
+![result](images/result.jpg)
