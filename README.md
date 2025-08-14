@@ -1,7 +1,5 @@
 # Omkar Shinde - Personal Portfolio Website
 
-
-
 ## 📌 Overview
 This is my personal portfolio website showcasing my skills, projects, achievements, and contact information.  
 It is built using **HTML, CSS, JavaScript**, and deployed with **Vercel** for fast and reliable hosting.
