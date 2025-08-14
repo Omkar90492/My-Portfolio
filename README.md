@@ -40,5 +40,4 @@ portfolio/
 ```
 Here’s how the portfolio looks when deployed:
 
-![Portfolio Preview](./assets/result.png)
-<!-- Save your screenshot as assets/result.png before pushing to GitHub -->
+![Portfolio Preview](assets/result.png)
