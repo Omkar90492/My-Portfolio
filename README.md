@@ -41,5 +41,5 @@ portfolio/
 Here’s how the portfolio looks when deployed:
 
 
-![result](images/result.jpg)
+![result](images/result.png)
 
