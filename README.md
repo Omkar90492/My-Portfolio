@@ -34,11 +34,12 @@ portfolio/
 ├── script.js         # JavaScript logic
 ├── assets/           # Images, icons, and other media
 └── README.md         # Documentation
+---
 
 ## 📸 Result
 Here’s how the portfolio looks when deployed:
 
-![Portfolio Preview](./assets/result.png)  
+![Portfolio Preview](./assets/result.png)
 <!-- Save your screenshot as assets/result.png before pushing to GitHub -->
 
 ---
@@ -56,3 +57,4 @@ Here’s how the portfolio looks when deployed:
 This portfolio represents my professional identity online.  
 It highlights my technical skills, projects, and achievements while giving visitors a simple way to connect with me.  
 By keeping it responsive, fast, and visually appealing, I aim to leave a strong first impression on potential recruiters, collaborators, and clients.
+
