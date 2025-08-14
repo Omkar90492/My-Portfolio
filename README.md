@@ -35,26 +35,10 @@ portfolio/
 ├── assets/           # Images, icons, and other media
 └── README.md         # Documentation
 ---
-
-## 📸 Result
+```
+## 📌 Results
+```
 Here’s how the portfolio looks when deployed:
 
 ![Portfolio Preview](./assets/result.png)
 <!-- Save your screenshot as assets/result.png before pushing to GitHub -->
-
----
-
-## 💡 Quick Tips
-- Keep images optimized (use compressed `.png` or `.webp` for faster load times).
-- Update your portfolio regularly with new projects.
-- Use descriptive commit messages when updating the repo.
-- Test on mobile and desktop before deployment.
-- Add SEO-friendly meta tags in `index.html` to improve search visibility.
-
----
-
-## 🏁 Conclusion
-This portfolio represents my professional identity online.  
-It highlights my technical skills, projects, and achievements while giving visitors a simple way to connect with me.  
-By keeping it responsive, fast, and visually appealing, I aim to leave a strong first impression on potential recruiters, collaborators, and clients.
-
