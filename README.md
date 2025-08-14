@@ -36,8 +36,3 @@ portfolio/
 └── README.md         # Documentation
 ---
 ```
-## 📌 Results
-```
-Here’s how the portfolio looks when deployed:
-
-![result](images/result.png)
