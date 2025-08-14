@@ -1,6 +1,6 @@
 # Omkar Shinde - Personal Portfolio Website
 
-![Portfolio Screenshot](./screenshot.png) <!-- Replace with actual screenshot if available -->
+
 
 ## 📌 Overview
 This is my personal portfolio website showcasing my skills, projects, achievements, and contact information.  
